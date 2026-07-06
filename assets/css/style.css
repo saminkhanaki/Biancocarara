@@ -1,0 +1,363 @@
+/* =========================================================
+   BIANCO CARRARA — Natural Stone Export
+   Design tokens
+   ========================================================= */
+:root{
+  /* --- Color: named after the stones themselves --- */
+  --ink:        #211f1c;   /* basalt — primary text / dark ground */
+  --paper:      #f6f2ea;   /* marble white — base background */
+  --stone:      #e7dfcd;   /* travertine beige — alt section bg */
+  --taupe:      #8c8272;   /* vein grey — secondary text */
+  --amber:      #b8752e;   /* onyx copper — accent / links / cta */
+  --amber-deep: #8f5a20;   /* pressed / hover state of accent */
+  --line:       #d8cdb8;   /* hairline rule */
+  --line-dark:  rgba(246,242,234,0.18);
+
+  /* --- Type --- */
+  --f-display: 'Fraunces', serif;
+  --f-body:    'Inter', -apple-system, sans-serif;
+  --f-label:   'Space Grotesk', 'Inter', sans-serif;
+
+  /* --- Rhythm --- */
+  --edge: clamp(24px, 5vw, 72px);
+  --radius: 2px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3,h4{ font-family:var(--f-display); font-weight:600; margin:0; letter-spacing:-0.01em; }
+p{ margin:0; }
+ul{ margin:0; padding:0; list-style:none; }
+button{ font-family:inherit; cursor:pointer; }
+
+:focus-visible{
+  outline:2px solid var(--amber);
+  outline-offset:3px;
+}
+
+.eyebrow{
+  font-family:var(--f-label);
+  font-size:12px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--amber);
+}
+
+.container{
+  max-width:1320px;
+  margin:0 auto;
+  padding:0 var(--edge);
+}
+
+/* =========================================================
+   Header / Navigation
+   ========================================================= */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:rgba(246,242,234,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-row{
+  display:flex; align-items:center; justify-content:space-between;
+  height:84px;
+}
+.wordmark{
+  font-family:var(--f-display);
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:0.01em;
+}
+.wordmark span{ color:var(--amber); font-style:italic; font-weight:400; }
+
+.nav-main{ display:flex; align-items:center; gap:40px; }
+.nav-main > li{ position:relative; }
+.nav-link{
+  font-family:var(--f-label);
+  font-size:13px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:8px 0;
+  position:relative;
+}
+.nav-link::after{
+  content:"";
+  position:absolute; left:0; right:100%; bottom:0;
+  height:1px; background:var(--amber);
+  transition:right 0.28s ease;
+}
+.nav-link:hover::after, .nav-link.active::after{ right:0; }
+
+/* Products mega-dropdown */
+.has-dropdown{ display:flex; align-items:center; gap:6px; }
+.caret{ transition:transform .2s ease; }
+.nav-item-products:hover .caret{ transform:rotate(180deg); }
+
+.mega{
+  position:absolute; top:100%; left:50%;
+  transform:translate(-50%,8px);
+  width:560px;
+  background:var(--ink);
+  color:var(--paper);
+  padding:28px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+  opacity:0; visibility:hidden;
+  transition:opacity .22s ease, transform .22s ease, visibility .22s;
+  box-shadow:0 24px 48px rgba(33,31,28,0.22);
+}
+.nav-item-products:hover .mega,
+.nav-item-products:focus-within .mega{
+  opacity:1; visibility:visible; transform:translate(-50%,14px);
+}
+.mega-item{ display:flex; flex-direction:column; gap:10px; text-align:left; }
+.mega-swatch{
+  width:100%; aspect-ratio:1/1; border-radius:1px; overflow:hidden;
+  border:1px solid var(--line-dark);
+}
+.mega-swatch img{ width:100%; height:100%; display:block; object-fit:cover; }
+.mega-name{ font-family:var(--f-label); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; }
+.mega-name small{ display:block; font-family:var(--f-body); text-transform:none; letter-spacing:0; color:var(--taupe); font-size:11px; margin-top:2px; }
+
+.nav-cta{
+  font-family:var(--f-label); font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper);
+  padding:12px 22px; border-radius:1px;
+  border:1px solid var(--ink);
+  transition:background .2s ease, color .2s ease;
+}
+.nav-cta:hover{ background:transparent; color:var(--ink); }
+
+.nav-toggle{ display:none; background:none; border:0; }
+
+/* =========================================================
+   Vein divider — signature element
+   ========================================================= */
+.vein-divider{ width:100%; overflow:hidden; line-height:0; }
+.vein-divider svg{ width:100%; height:auto; display:block; }
+.vein-path{
+  fill:none; stroke:var(--amber); stroke-width:1; opacity:0.55;
+  stroke-dasharray:1400; stroke-dashoffset:1400;
+  transition:stroke-dashoffset 1.6s cubic-bezier(.16,.84,.44,1);
+}
+.vein-divider.in-view .vein-path{ stroke-dashoffset:0; }
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero{
+  position:relative;
+  display:grid;
+  min-height:88vh;
+}
+.hero-media{ position:relative; width:100%; height:100%; min-height:88vh; overflow:hidden; }
+.hero-media img{ width:100%; height:100%; object-fit:cover; }
+.hero-copy{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:56px var(--edge);
+  background:linear-gradient(0deg, rgba(33,31,28,0.72) 0%, rgba(33,31,28,0.15) 45%, rgba(33,31,28,0) 65%);
+  color:var(--paper);
+}
+.hero-copy .eyebrow{ color:var(--amber); margin-bottom:18px; }
+.hero-title{
+  font-size:clamp(42px, 7vw, 96px);
+  line-height:0.98;
+  max-width:16ch;
+}
+.hero-title em{ font-style:italic; font-weight:400; color:var(--amber); }
+.hero-sub{
+  margin-top:22px; max-width:46ch;
+  font-size:17px; color:rgba(246,242,234,0.86);
+}
+.hero-actions{ margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; }
+
+.btn{
+  font-family:var(--f-label); font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+  padding:15px 28px; border-radius:1px; display:inline-block;
+  transition:all .22s ease;
+}
+.btn-primary{ background:var(--amber); color:var(--ink); border:1px solid var(--amber); }
+.btn-primary:hover{ background:var(--amber-deep); border-color:var(--amber-deep); }
+.btn-ghost{ border:1px solid rgba(246,242,234,0.5); color:var(--paper); }
+.btn-ghost:hover{ border-color:var(--paper); background:rgba(246,242,234,0.08); }
+.btn-dark{ background:var(--ink); color:var(--paper); border:1px solid var(--ink); }
+.btn-dark:hover{ background:transparent; color:var(--ink); }
+
+/* =========================================================
+   Section scaffolding
+   ========================================================= */
+section{ padding:96px 0; }
+.section-alt{ background:var(--stone); }
+.section-head{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:32px;
+  margin-bottom:56px; flex-wrap:wrap;
+}
+.section-title{ font-size:clamp(30px,4vw,46px); margin-top:14px; max-width:14ch; }
+.section-note{ max-width:36ch; color:var(--taupe); font-size:15px; }
+
+/* Featured grid (home, below hero) */
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); }
+.stone-card{
+  background:var(--paper); position:relative; display:block; overflow:hidden;
+  transition:background .25s ease;
+}
+.stone-card-media{ aspect-ratio:4/5; overflow:hidden; }
+.stone-card-media img{ width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.16,.84,.44,1); }
+.stone-card:hover .stone-card-media img{ transform:scale(1.06); }
+.stone-card-body{ padding:26px 28px 30px; }
+.stone-card-index{ font-family:var(--f-label); font-size:12px; color:var(--amber); letter-spacing:0.08em; }
+.stone-card-name{ font-size:24px; margin-top:10px; }
+.stone-card-desc{ margin-top:10px; color:var(--taupe); font-size:14.5px; max-width:34ch; }
+.stone-card-link{ margin-top:18px; display:inline-flex; align-items:center; gap:8px; font-family:var(--f-label); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; }
+.stone-card-link svg{ width:14px; height:14px; transition:transform .2s ease; }
+.stone-card:hover .stone-card-link svg{ transform:translateX(4px); }
+
+/* =========================================================
+   About-style content blocks
+   ========================================================= */
+.split{
+  display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+}
+.pull-quote{
+  font-family:var(--f-display); font-style:italic; font-weight:400;
+  font-size:clamp(24px,2.6vw,34px); line-height:1.35; max-width:22ch;
+}
+.pull-quote cite{ display:block; font-style:normal; font-family:var(--f-label); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); margin-top:20px; }
+
+.stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line); margin-top:64px; }
+.stat{ background:var(--paper); padding:32px 28px; }
+.stat-num{ font-family:var(--f-display); font-size:44px; }
+.stat-label{ margin-top:8px; font-family:var(--f-label); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--taupe); }
+
+.origin-row{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); }
+.origin-card{ background:var(--ink); color:var(--paper); padding:52px 44px; }
+.origin-card h3{ font-size:30px; }
+.origin-card p{ margin-top:16px; color:rgba(246,242,234,0.78); font-size:15px; max-width:42ch; }
+.origin-tag{ margin-top:24px; display:flex; gap:10px; flex-wrap:wrap; }
+.origin-tag span{ font-family:var(--f-label); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; border:1px solid rgba(246,242,234,0.3); padding:6px 12px; }
+
+/* =========================================================
+   Product listing (products/index.html)
+   ========================================================= */
+.cat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); }
+.cat-card{ background:var(--paper); display:grid; grid-template-columns:1fr 1fr; min-height:360px; }
+.cat-card:nth-child(even){ direction:rtl; }
+.cat-card:nth-child(even) > *{ direction:ltr; }
+.cat-media{ overflow:hidden; }
+.cat-media img{ width:100%; height:100%; object-fit:cover; }
+.cat-copy{ padding:44px; display:flex; flex-direction:column; justify-content:center; }
+.cat-copy .eyebrow{ margin-bottom:12px; }
+.cat-copy h3{ font-size:30px; }
+.cat-copy p{ margin-top:14px; color:var(--taupe); font-size:14.5px; max-width:34ch; }
+.cat-copy .btn{ margin-top:24px; align-self:flex-start; }
+
+/* =========================================================
+   Product detail page
+   ========================================================= */
+.prod-hero{ display:grid; grid-template-columns:1.1fr 0.9fr; min-height:78vh; }
+.prod-hero-media img{ width:100%; height:100%; object-fit:cover; }
+.prod-hero-copy{ display:flex; flex-direction:column; justify-content:center; padding:var(--edge); background:var(--stone); }
+.prod-hero-copy h1{ font-size:clamp(38px,5vw,64px); margin-top:14px; }
+.prod-hero-copy p{ margin-top:20px; color:var(--taupe); max-width:42ch; font-size:15.5px; }
+
+.spec-table{ width:100%; border-collapse:collapse; }
+.spec-table tr{ border-bottom:1px solid var(--line); }
+.spec-table td{ padding:18px 4px; font-size:14.5px; }
+.spec-table td:first-child{ font-family:var(--f-label); text-transform:uppercase; letter-spacing:0.06em; font-size:12px; color:var(--taupe); width:40%; }
+
+.finish-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--line); }
+.finish{ background:var(--paper); padding:26px 22px; }
+.finish-swatch{ aspect-ratio:1/1; margin-bottom:14px; overflow:hidden; }
+.finish-swatch img{ width:100%; height:100%; object-fit:cover; }
+.finish-name{ font-family:var(--f-label); font-size:13px; letter-spacing:0.04em; }
+.finish-desc{ margin-top:6px; color:var(--taupe); font-size:13px; }
+
+.variant-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); }
+.variant{ background:var(--paper); }
+.variant-media{ aspect-ratio:5/6; overflow:hidden; }
+.variant-media img{ width:100%; height:100%; object-fit:cover; }
+.variant-body{ padding:20px 24px 26px; }
+.variant-body h4{ font-size:18px; }
+.variant-body p{ margin-top:6px; color:var(--taupe); font-size:13.5px; }
+
+.related-strip{ display:flex; gap:2px; background:var(--line); }
+.related-strip .stone-card{ flex:1; }
+
+/* =========================================================
+   Contact page
+   ========================================================= */
+.contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); }
+.contact-info{ background:var(--ink); color:var(--paper); padding:56px; }
+.contact-info h3{ font-size:26px; }
+.contact-list{ margin-top:34px; display:flex; flex-direction:column; gap:22px; }
+.contact-list li{ display:flex; flex-direction:column; gap:4px; }
+.contact-list .label{ font-family:var(--f-label); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); }
+.contact-list .value{ font-size:16px; }
+.contact-form{ background:var(--paper); padding:56px; }
+.field{ margin-bottom:22px; }
+.field label{ display:block; font-family:var(--f-label); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--taupe); margin-bottom:8px; }
+.field input, .field select, .field textarea{
+  width:100%; border:none; border-bottom:1px solid var(--line);
+  background:transparent; padding:12px 2px; font-family:var(--f-body); font-size:15px; color:var(--ink);
+}
+.field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--amber); }
+.field textarea{ resize:vertical; min-height:100px; }
+.field-row{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.form-note{ margin-top:8px; font-size:12.5px; color:var(--taupe); }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer{ background:var(--ink); color:var(--paper); padding:64px 0 28px; }
+.footer-row{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid var(--line-dark); }
+.footer-brand .wordmark{ color:var(--paper); }
+.footer-brand p{ margin-top:16px; color:rgba(246,242,234,0.6); font-size:14px; max-width:32ch; }
+.footer-head{ font-family:var(--f-label); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); margin-bottom:18px; }
+.footer-links li{ margin-bottom:12px; font-size:14.5px; color:rgba(246,242,234,0.82); }
+.footer-links a:hover{ color:var(--paper); }
+.footer-bottom{ display:flex; justify-content:space-between; padding-top:26px; font-size:12.5px; color:rgba(246,242,234,0.5); flex-wrap:wrap; gap:12px; }
+
+/* =========================================================
+   Reveal on scroll (generic)
+   ========================================================= */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s cubic-bezier(.16,.84,.44,1); }
+.reveal.in-view{ opacity:1; transform:none; }
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width:980px){
+  .nav-main{ position:fixed; inset:84px 0 0 0; background:var(--paper); flex-direction:column; align-items:flex-start; padding:32px var(--edge); gap:0; transform:translateX(100%); transition:transform .3s ease; overflow-y:auto; }
+  .nav-main.open{ transform:translateX(0); }
+  .nav-main > li{ width:100%; border-bottom:1px solid var(--line); }
+  .nav-link{ display:block; padding:18px 0; }
+  .mega{ position:static; transform:none; width:100%; opacity:1; visibility:visible; display:none; grid-template-columns:repeat(2,1fr); box-shadow:none; margin-bottom:12px; }
+  .nav-item-products.open .mega{ display:grid; }
+  .nav-toggle{ display:block; }
+  .split, .origin-row, .cat-card, .prod-hero, .contact-grid{ grid-template-columns:1fr; }
+  .cat-card:nth-child(even){ direction:ltr; }
+  .grid-3, .stat-row, .finish-grid, .variant-grid, .related-strip{ grid-template-columns:1fr; }
+  .footer-row{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:600px){
+  .footer-row{ grid-template-columns:1fr; }
+  .field-row{ grid-template-columns:1fr; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  .reveal, .vein-path, .stone-card-media img, .nav-link::after{ transition:none !important; }
+  .reveal{ opacity:1; transform:none; }
+  .vein-path{ stroke-dashoffset:0; }
+}
