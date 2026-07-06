@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Bianco Carrara</title>
+<meta name="description" content="Request a quote for marble, travertine, onyx or granite from Bianco Carrara's quarries in Iran and Turkey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="wordmark">BIANCO <span>Carrara</span></a>
+    <nav>
+      <ul class="nav-main" id="nav-main">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item-products">
+          <a href="products/index.html" class="nav-link has-dropdown">
+            Products
+            <svg class="caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4"/></svg>
+          </a>
+          <div class="mega">
+            <a class="mega-item" href="products/marble.html">
+              <span class="mega-swatch"><img src="assets/images/marble_swatch.svg" alt="Marble texture"></span>
+              <span class="mega-name">Marble<small>Bianco &amp; Nero blocks</small></span>
+            </a>
+            <a class="mega-item" href="products/travertine.html">
+              <span class="mega-swatch"><img src="assets/images/travertine_swatch.svg" alt="Travertine texture"></span>
+              <span class="mega-name">Travertine<small>Classico &amp; Noce</small></span>
+            </a>
+            <a class="mega-item" href="products/onyx.html">
+              <span class="mega-swatch"><img src="assets/images/onyx_swatch.svg" alt="Onyx texture"></span>
+              <span class="mega-name">Onyx<small>Backlit honey &amp; green</small></span>
+            </a>
+            <a class="mega-item" href="products/granite.html">
+              <span class="mega-swatch"><img src="assets/images/granite_swatch.svg" alt="Granite texture"></span>
+              <span class="mega-name">Granite<small>Galaxy &amp; grey</small></span>
+            </a>
+          </div>
+        </li>
+        <li><a href="contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="nav-cta">Request a Quote</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <section style="padding-bottom:56px;">
+    <div class="container">
+      <p class="eyebrow reveal">Get in Touch</p>
+      <h1 class="section-title reveal" style="max-width:18ch; font-size:clamp(36px,5.5vw,58px); margin-top:16px;">Tell us what you're building.</h1>
+      <p class="section-note reveal" style="margin-top:16px; max-width:52ch;">Send stone type, dimensions, finish and quantity if you have them — a rough idea is enough to start. We typically reply within one business day.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <h3>Direct Contact</h3>
+          <ul class="contact-list">
+            <li>
+              <span class="label">Sales Enquiries</span>
+              <span class="value"><a href="mailto:sales@biancocarara.com">sales@biancocarara.com</a></span>
+            </li>
+            <li>
+              <span class="label">Phone / WhatsApp</span>
+              <span class="value"><a href="tel:+900000000">+90 000 000 00 00</a></span>
+            </li>
+            <li>
+              <span class="label">Iran Office</span>
+              <span class="value">Quarry &amp; export liaison, Iran</span>
+            </li>
+            <li>
+              <span class="label">Turkey Office</span>
+              <span class="value">Quarry &amp; export liaison, Turkey</span>
+            </li>
+            <li>
+              <span class="label">Export Terms</span>
+              <span class="value">FOB and CIF quotes available on request</span>
+            </li>
+          </ul>
+        </div>
+        <div class="contact-form">
+          <form>
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone / WhatsApp</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+            </div>
+            <div class="field">
+              <label for="stone">Stone of Interest</label>
+              <select id="stone" name="stone">
+                <option value="">Not sure yet</option>
+                <option value="marble">Marble</option>
+                <option value="travertine">Travertine</option>
+                <option value="onyx">Onyx</option>
+                <option value="granite">Granite</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" placeholder="Finish, dimensions, quantity, destination port..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">Send Enquiry</button>
+            <p class="form-note">This form is a static placeholder — connect it to an email service (e.g. Formspree) or backend once the site is live.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <a href="index.html" class="wordmark">BIANCO <span>Carrara</span></a>
+        <p>Marble, travertine, onyx and granite quarried and cut across Iran and Turkey, exported worldwide.</p>
+      </div>
+      <div>
+        <p class="footer-head">Products</p>
+        <ul class="footer-links">
+          <li><a href="products/marble.html">Marble</a></li>
+          <li><a href="products/travertine.html">Travertine</a></li>
+          <li><a href="products/onyx.html">Onyx</a></li>
+          <li><a href="products/granite.html">Granite</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-head">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-head">Reach Us</p>
+        <ul class="footer-links">
+          <li><a href="mailto:sales@biancocarara.com">sales@biancocarara.com</a></li>
+          <li><a href="tel:+900000000">+90 000 000 00 00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bianco Carrara. All rights reserved.</span>
+      <span>Quarried in Iran &amp; Turkey — shipped worldwide.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
